@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import RiskTrendChart from './charts/RiskTrendChart';
-import RiskCategoryChart from './charts/RiskCategoryChart';
+import MuiBarChart from './charts/MuiBarChart';
 import ApexBoxPlotChart from './charts/ApexBoxPlotChart';
 import { getMockData, getUniqueValues, filterData } from '../services/mockDataService';
 
@@ -27,26 +27,26 @@ const Dashboard = () => {
   const uniqueSpecialties = getUniqueValues(mockData, 'specialty');
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 space-y-4">
       {/* Header */}
-      <div className="text-center py-8">
-        <h1 className="text-4xl font-bold text-slate-800 mb-2">
+      <div className="text-center py-4">
+        <h1 className="text-2xl font-bold text-slate-800 mb-1">
           Fraud Risk Dashboard
         </h1>
-        <p className="text-slate-600">Monitor and analyze healthcare fraud risk patterns</p>
+        <p className="text-sm text-slate-600">Monitor and analyze healthcare fraud risk patterns</p>
       </div>
 
       {/* Filters */}
-      <Card className="shadow-lg border-0 bg-white/70 backdrop-blur-sm">
-        <CardHeader>
-          <CardTitle className="text-xl text-slate-700">Filters</CardTitle>
+      <Card className="shadow-sm border-0 bg-white/70 backdrop-blur-sm">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-lg text-slate-700">Filters</CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-600">Hospital Name</label>
+        <CardContent className="pt-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="space-y-1">
+              <label className="text-xs font-medium text-slate-600">Hospital Name</label>
               <Select value={selectedHospital} onValueChange={setSelectedHospital}>
-                <SelectTrigger className="bg-white">
+                <SelectTrigger className="bg-white h-8">
                   <SelectValue placeholder="Select Hospital" />
                 </SelectTrigger>
                 <SelectContent className="bg-white z-50">
@@ -60,10 +60,10 @@ const Dashboard = () => {
               </Select>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-600">Location</label>
+            <div className="space-y-1">
+              <label className="text-xs font-medium text-slate-600">Location</label>
               <Select value={selectedLocation} onValueChange={setSelectedLocation}>
-                <SelectTrigger className="bg-white">
+                <SelectTrigger className="bg-white h-8">
                   <SelectValue placeholder="Select Location" />
                 </SelectTrigger>
                 <SelectContent className="bg-white z-50">
@@ -77,10 +77,10 @@ const Dashboard = () => {
               </Select>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-600">Specialty</label>
+            <div className="space-y-1">
+              <label className="text-xs font-medium text-slate-600">Specialty</label>
               <Select value={selectedSpecialty} onValueChange={setSelectedSpecialty}>
-                <SelectTrigger className="bg-white">
+                <SelectTrigger className="bg-white h-8">
                   <SelectValue placeholder="Select Specialty" />
                 </SelectTrigger>
                 <SelectContent className="bg-white z-50">
@@ -98,34 +98,34 @@ const Dashboard = () => {
       </Card>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Risk Trend Chart */}
-        <Card className="shadow-lg border-0 bg-white/70 backdrop-blur-sm">
-          <CardHeader>
-            <CardTitle className="text-xl text-slate-700">Risk Score Trend</CardTitle>
+        <Card className="shadow-sm border-0 bg-white/70 backdrop-blur-sm">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-lg text-slate-700">Risk Score Trend</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-0">
             <RiskTrendChart data={filteredData} />
           </CardContent>
         </Card>
 
-        {/* Risk Category Chart */}
-        <Card className="shadow-lg border-0 bg-white/70 backdrop-blur-sm">
-          <CardHeader>
-            <CardTitle className="text-xl text-slate-700">Risk Score by Category</CardTitle>
+        {/* MUI Bar Chart */}
+        <Card className="shadow-sm border-0 bg-white/70 backdrop-blur-sm">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-lg text-slate-700">Risk Score by Category</CardTitle>
           </CardHeader>
-          <CardContent>
-            <RiskCategoryChart data={filteredData} />
+          <CardContent className="pt-0">
+            <MuiBarChart data={filteredData} />
           </CardContent>
         </Card>
       </div>
 
       {/* Risk Distribution Chart - Full Width */}
-      <Card className="shadow-lg border-0 bg-white/70 backdrop-blur-sm">
-        <CardHeader>
-          <CardTitle className="text-xl text-slate-700">Risk Distribution Analysis</CardTitle>
+      <Card className="shadow-sm border-0 bg-white/70 backdrop-blur-sm">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-lg text-slate-700">Risk Distribution Analysis</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-0">
           <ApexBoxPlotChart data={filteredData} />
         </CardContent>
       </Card>

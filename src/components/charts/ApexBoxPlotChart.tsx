@@ -18,7 +18,7 @@ const ApexBoxPlotChart: React.FC<ApexBoxPlotChartProps> = ({ data }) => {
   const options = {
     chart: {
       type: 'boxPlot' as const,
-      height: 350,
+      height: 280,
       toolbar: {
         show: false
       },
@@ -28,7 +28,7 @@ const ApexBoxPlotChart: React.FC<ApexBoxPlotChartProps> = ({ data }) => {
       text: 'Risk Score Distribution by Specialty',
       align: 'left' as const,
       style: {
-        fontSize: '16px',
+        fontSize: '14px',
         fontWeight: '600',
         color: '#334155'
       }
@@ -46,7 +46,7 @@ const ApexBoxPlotChart: React.FC<ApexBoxPlotChartProps> = ({ data }) => {
       labels: {
         style: {
           colors: '#475569',
-          fontSize: '11px',
+          fontSize: '10px',
           fontWeight: 500
         },
         rotate: -45
@@ -63,14 +63,14 @@ const ApexBoxPlotChart: React.FC<ApexBoxPlotChartProps> = ({ data }) => {
         text: 'Risk Score',
         style: {
           color: '#475569',
-          fontSize: '12px',
+          fontSize: '11px',
           fontWeight: 600
         }
       },
       labels: {
         style: {
           colors: '#475569',
-          fontSize: '11px'
+          fontSize: '10px'
         }
       }
     },
@@ -82,7 +82,7 @@ const ApexBoxPlotChart: React.FC<ApexBoxPlotChartProps> = ({ data }) => {
     tooltip: {
       theme: 'light',
       style: {
-        fontSize: '12px'
+        fontSize: '11px'
       }
     }
   };
@@ -93,12 +93,12 @@ const ApexBoxPlotChart: React.FC<ApexBoxPlotChartProps> = ({ data }) => {
   }];
 
   return (
-    <div className="h-96">
+    <div className="h-72 overflow-hidden">
       <ReactApexChart 
         options={options} 
         series={series} 
         type="boxPlot" 
-        height={350} 
+        height={280} 
       />
     </div>
   );
