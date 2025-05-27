@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import RiskTrendChart from './charts/RiskTrendChart';
 import RiskCategoryChart from './charts/RiskCategoryChart';
-import RiskDistributionChart from './charts/RiskDistributionChart';
+import ApexBoxPlotChart from './charts/ApexBoxPlotChart';
 import { getMockData, getUniqueValues, filterData } from '../services/mockDataService';
 
 const Dashboard = () => {
@@ -126,7 +126,7 @@ const Dashboard = () => {
           <CardTitle className="text-xl text-slate-700">Risk Distribution Analysis</CardTitle>
         </CardHeader>
         <CardContent>
-          <RiskDistributionChart data={filteredData} />
+          <ApexBoxPlotChart data={filteredData} />
         </CardContent>
       </Card>
     </div>

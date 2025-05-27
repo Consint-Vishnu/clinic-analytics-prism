@@ -14,9 +14,9 @@ const RiskCategoryChart: React.FC<RiskCategoryChartProps> = ({ data }) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg max-w-xs">
-          <p className="text-sm font-medium text-gray-600">{data.fullCategory}</p>
-          <p className="text-sm text-blue-600">
+        <div className="bg-white p-4 border border-gray-200 rounded-xl shadow-xl">
+          <p className="text-sm font-semibold text-gray-800 mb-1">{data.fullCategory}</p>
+          <p className="text-sm text-blue-600 font-medium">
             {`Risk Score: ${payload[0].value}`}
           </p>
         </div>
@@ -28,22 +28,39 @@ const RiskCategoryChart: React.FC<RiskCategoryChartProps> = ({ data }) => {
   return (
     <div className="h-80">
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 60 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+        <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
+          <defs>
+            <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.9}/>
+              <stop offset="95%" stopColor="#1d4ed8" stopOpacity={0.7}/>
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" strokeOpacity={0.5} />
           <XAxis 
             dataKey="category" 
-            stroke="#64748b"
-            fontSize={12}
+            stroke="#475569"
+            fontSize={11}
+            fontWeight={500}
             angle={-45}
             textAnchor="end"
             height={80}
+            tick={{ fill: '#475569' }}
           />
-          <YAxis stroke="#64748b" fontSize={12} />
-          <Tooltip content={<CustomTooltip />} />
+          <YAxis 
+            stroke="#475569" 
+            fontSize={12}
+            fontWeight={500}
+            tick={{ fill: '#475569' }}
+            axisLine={{ stroke: '#cbd5e1' }}
+            tickLine={{ stroke: '#cbd5e1' }}
+          />
+          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(59, 130, 246, 0.1)' }} />
           <Bar 
             dataKey="riskScore" 
-            fill="#3b82f6"
-            radius={[4, 4, 0, 0]}
+            fill="url(#barGradient)"
+            radius={[6, 6, 0, 0]}
+            stroke="#2563eb"
+            strokeWidth={1}
           />
         </BarChart>
       </ResponsiveContainer>
